@@ -21,7 +21,6 @@ app.get("/", (req, res) => {
 
 // CREATE SOCKET CONNECTION
 io.on("connection", (socket) => {
-  
   // SEND SOCKET ID TO CLIENT
   socket.emit("self", socket.id);
 
@@ -43,7 +42,7 @@ io.on("connection", (socket) => {
   // GET DATA FROM CALLEE
   socket.on("answerCall", (data) => {
     // SEND DATA TO CALLER
-    io.to(data.to).emit("callAccepted", data.signal);
+    io.to(data.to).emit("callAccepted", data);
   });
 });
 
